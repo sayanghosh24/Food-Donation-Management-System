@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receiver Signup</title>
+    <style>
+        /* Reset and global styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Body and container styling */
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(180deg, #279B00, #00339A);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            width: 90%;
+            max-width: 700px;
+            height: auto;
+        }
+
+        /* Image styling */
+        .image-container {
+            width: 100%;
+            height: 200px;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Form box and layout styling */
+        .form-fields {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h2 {
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 12px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        label {
+            color: white;
+            display: block;
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+
+        /* Input and button styling */
+        input,
+        .btn {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            background-color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        /* Input box hover and focus effects */
+        input:hover {
+            background-color: #ffffff;
+            border: 1px solid #bbb;
+        }
+
+        input:focus {
+            outline: none;
+            background-color: #ffffff;
+            box-shadow: 0 0 5px rgba(39, 155, 0, 0.5);
+            border: 1px solid #279B00;
+        }
+
+        .btn {
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #c0c0c0;
+        }
+
+        .info-text {
+            color: lightgray;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        /* Error message styling */
+        .error-message {
+            color: #ffcccc;
+            font-size: 12px;
+            margin-top: -8px;
+            margin-bottom: 8px;
+        }
+
+        /* Responsive styling */
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+                height: 450px;
+            }
+
+            .image-container {
+                width: 50%;
+                height: auto;
+            }
+
+            .form-fields {
+                width: 50%;
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="image-container">
+            <img src="bhikari.png" alt="Profile Image">
+        </div>
+        <div class="form-fields">
+            <h2>Food Receiver Signup</h2>
+            <form id="signup-form">
+                <label for="receiver-name">Full Name:</label>
+                <input type="text" id="receiver-name" name="receiver-name" placeholder="Enter your full name">
+
+                <label for="receiver-email">Email:</label>
+                <input type="email" id="receiver-email" name="receiver-email" placeholder="Enter your email">
+
+                <label for="receiver-password">Password:</label>
+                <input type="password" id="receiver-password" name="receiver-password" placeholder="Enter your password" required>
+                <p id="password-error" class="error-message"></p>
+
+                <!-- Upload Photo ID field -->
+                <label for="photo-id">Upload Photo ID:</label>
+                <input type="file" id="photo-id" name="photo-id" accept="image/*" required>
+                <p id="file-error" class="error-message"></p>
+
+                <!-- ID Verification Information -->
+                <p class="info-text">Your ID will be reviewed by our admin team. Verification is required to log in.</p>
+
+                <button type="submit" class="btn">LOG IN</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("signup-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const password = document.getElementById("receiver-password").value;
+            const fileInput = document.getElementById("photo-id");
+            const passwordError = document.getElementById("password-error");
+            const fileError = document.getElementById("file-error");
+
+            const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+            // Clear previous error messages
+            passwordError.textContent = "";
+            fileError.textContent = "";
+
+            // Validate password
+            let isValid = true;
+            if (!passwordPattern.test(password)) {
+                passwordError.textContent = "Password must be at least 8 characters long, include uppercase, lowercase, a number, and a special character.";
+                isValid = false;
+            }
+
+            // Validate file input
+            if (fileInput.files.length === 0) {
+                fileError.textContent = "Please upload a photo ID.";
+                isValid = false;
+            }
+
+            // If all validations pass, simulate form submission
+            if (isValid) {
+                alert("Signup successful. Your ID will be verified by the admin.");
+            }
+        });
+    </script>
+</body>
+
+</html>

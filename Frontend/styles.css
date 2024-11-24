@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, #279B00, #00339A);
+    color: white;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 50px;
+    padding-right: 9%;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px); /* Blur effect for better aesthetics */
+}
+.logo{
+    margin-right: 10%;
+}
+.logo img {
+    width: 290px;
+    height: auto;
+    border-radius: 20%;
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.login-box {
+    text-align: center;
+    max-width: 400px;
+}
+
+.login-box h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.login-box .subtitle {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #0be61d;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.btn {
+    background-color: #e0e0e0;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 250px;
+    font-weight: 700;
+    font-family: 'Ubuntu', sans-serif;
+    transition: background-color 0.3s ease;
+    color: #00339A;
+}
+
+.btn-donor {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-receiver {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.btn:hover {
+    background-color: #c0c0c0;
+}
+
+.btn-donor:hover {
+    background-color: #218838;
+}
+
+.btn-receiver:hover {
+    background-color: #138496;
+}
+
+.or-text {
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+    margin: 10px 0;
+}
+
+p {
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 30px;
+    }
+
+    .logo img {
+        width: 180px;
+    }
+
+    .login-box h2 {
+        font-size: 24px;
+    }
+
+    .btn {
+        width: 200px;
+    }
+}

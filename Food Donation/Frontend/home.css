@@ -1,0 +1,125 @@
+body {
+    font-family: Arial, sans-serif;
+    /* background-color: #ff4d00; */
+    background: url(homepageimg.jpg);
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.logo {
+    height: 50px;
+    width: 50px;
+    border-radius: 15px;
+    margin-right: 10px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.brand-name {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.header-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.header-links button {
+    padding: 10px 15px;
+    background-color: white;
+    color: #ff4d00;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.cta h1 {
+    font-size: 2em;
+    margin: 10px 0;
+}
+
+.search-container {
+    display: flex;
+    gap: 10px;
+}
+
+.search-container select,
+.search-container input {
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 50px;
+    border: none;
+    background-color: #16ee28;
+    width: 250px;
+}
+
+.carousel {
+    position: relative;
+    overflow: hidden;
+    width: 90%;
+    margin: auto;
+    padding: 20px 0;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.category-card {
+    border-radius: 10px;
+    text-align: center;
+    flex-shrink: 0;
+    margin: 0 10px;
+}
+
+.category-card img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.carousel-controls button {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}

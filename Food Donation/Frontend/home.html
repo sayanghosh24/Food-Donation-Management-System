@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Receiver Signup</title>
+  <style>
+    /* Reset and global styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Body styling */
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(180deg, #279B00, #00339A);
+      color: #fff;
+    }
+
+    /* Container styling */
+    .container {
+      display: flex;
+      flex-direction: row; /* Side-by-side layout */
+      width: 85%; /* Reduced width */
+      max-width: 700px; /* Smaller max width */
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 12px; /* Slightly reduced border-radius */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Softer shadow */
+      overflow: hidden;
+    }
+
+    /* Image styling */
+    .image-container {
+      flex: 1; /* Take half the width */
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Form styling */
+    .form-container {
+      flex: 1; /* Take half the width */
+      padding: 20px; /* Reduced padding */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: stretch;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 22px; /* Reduced font size */
+      margin-bottom: 15px; /* Reduced margin */
+    }
+
+    label {
+      color: white;
+      margin-bottom: 5px; /* Smaller spacing */
+      font-size: 14px;
+    }
+
+    input,
+    button {
+      width: 100%;
+      padding: 8px; /* Reduced padding */
+      margin-bottom: 12px; /* Reduced spacing */
+      border-radius: 6px; /* Slightly reduced border-radius */
+      border: 1px solid #ddd;
+      font-size: 14px;
+      background-color: rgba(255, 255, 255, 0.8);
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      outline: none;
+      background-color: #ffffff;
+      box-shadow: 0 0 5px rgba(39, 155, 0, 0.5);
+      border: 1px solid #279B00;
+    }
+
+    button {
+      background-color: #279B00;
+      color: white;
+      font-size: 15px; /* Slightly reduced font size */
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #1f7a00;
+    }
+
+    .info-text {
+      color: lightgray;
+      font-size: 12px;
+      text-align: center;
+      margin-top: 8px; /* Reduced margin */
+    }
+
+    /* Responsive styling */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column; /* Stack on small screens */
+      }
+
+      .image-container {
+        height: 180px; /* Limit image height for small screens */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Left Image Section -->
+    <div class="image-container">
+      <img src="bhikari.png" alt="Food Sharing">
+    </div>
+
+    <!-- Right Form Section -->
+    <div class="form-container">
+      <h1>Food Receiver Signup</h1>
+      <form id="signup-form" enctype="multipart/form-data">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter a strong password" required>
+
+        <label for="photoId">Upload Photo ID:</label>
+        <input type="file" id="photoId" name="photoId" accept="image/*" required>
+
+        <button type="submit">Verify</button>
+      </form>
+      <p class="info-text">All fields are mandatory. Please ensure your details are correct.</p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('signup-form').addEventListener('submit', async function (event) {
+      event.preventDefault();
+
+      const formData = new FormData(this);
+      try {
+        const response = await fetch('http://localhost:5000/api/receiver/signup', {
+          method: 'POST',
+          body: formData
+        });
+
+        const data = await response.json();
+        alert(data.message);
+      } catch (error) {
+        alert('Error: ' + error.message);
+      }
+    });
+  </script>
+</body>
+</html>
